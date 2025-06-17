@@ -38,11 +38,10 @@ async function putService(req, res) {
   try {
     const { id } = req.params;
     const updateData = req.body;
-    await Service.findByIdAndUpdate(id, updateData);
-    res.status(200).json({ msg: "Serviço atualizado" });
+    const updatedService = await Service.findByIdAndUpdate(id, updateData, { new: true });
+    res.status(200).json({ msg: "Serviço atualizado", updatedService });
   } catch (error) {
     res.status(500).json({ msg: "Erro ao atualizar serviço", error });
   }
 }
-
 export { getService, createService, deleteService, putService };
