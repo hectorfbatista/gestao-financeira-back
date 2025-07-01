@@ -5,6 +5,7 @@ import connectDataBase from "./database/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import servicesRoutes from "./routes/servicesRoutes.js";
 import clientRoutes from "./routes/clientRoutes.js";
+import agendaRoutes from "./routes/agendaRoutes.js";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use("/api", authRoutes);
 app.use("/api", servicesRoutes);
 app.use("/api", clientRoutes);
+app.use("/api", agendaRoutes);
 
 app.get("/", (req, res) => {
   res.status(200).json({ msg: "API funcionando" });
